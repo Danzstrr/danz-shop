@@ -43,7 +43,7 @@
 
         .running-text-area {
             background: linear-gradient(90deg, #11161f, #1a1f2e);
-            padding: 12px 10px;
+            padding: 10px 10px;
             border-bottom: 1px solid rgba(245, 176, 66, 0.5);
             overflow: hidden;
             white-space: nowrap;
@@ -51,8 +51,8 @@
 
         .running-text {
             display: inline-block;
-            font-size: 1.3rem;
-            font-weight: 800;
+            font-size: 1.1rem;
+            font-weight: 700;
             background: linear-gradient(135deg, #FFE0A3, #FFB347);
             -webkit-background-clip: text;
             background-clip: text;
@@ -63,7 +63,7 @@
 
         .running-text i {
             color: #ffb347;
-            margin: 0 8px;
+            margin: 0 6px;
         }
 
         @keyframes slideText {
@@ -72,99 +72,39 @@
         }
 
         @media (max-width: 600px) {
-            .running-text { font-size: 1rem; animation: slideText 18s linear infinite; }
+            .running-text { font-size: 0.9rem; animation: slideText 18s linear infinite; }
             .hero-img { max-height: 140px; }
         }
 
         .content-padding {
-            padding: 24px 26px 20px 26px;
+            padding: 20px 24px 20px 24px;
         }
 
-        /* Form ID terpisah ML & FF */
-        .id-section {
-            background: linear-gradient(135deg, #10141f, #0b0f17);
-            border-radius: 32px;
-            padding: 18px 20px;
-            margin-bottom: 28px;
-            border: 1px solid rgba(255, 180, 70, 0.4);
-        }
-
-        .id-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #ffd966;
-            margin-bottom: 14px;
-            border-left: 4px solid #ffb347;
-            padding-left: 12px;
-        }
-
-        .id-title i {
-            font-size: 1.3rem;
-        }
-
-        .input-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 8px;
-        }
-
-        .input-field {
-            flex: 1;
-            background: #1e253f;
-            border: 1px solid #ffb34755;
-            padding: 12px 16px;
-            border-radius: 40px;
-            font-size: 0.9rem;
-            color: #fff3df;
-            outline: none;
-        }
-
-        .input-field:focus {
-            border-color: #ffb347;
-            box-shadow: 0 0 6px rgba(255, 180, 70, 0.5);
-        }
-
-        .input-field::placeholder {
-            color: #9aa2c0;
-        }
-
-        .info-tip {
-            font-size: 0.7rem;
-            color: #9aa4c9;
-            margin-top: 6px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
+        /* SECTION TITLE */
         .section-title {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.6rem;
+            gap: 10px;
+            font-size: 1.4rem;
             font-weight: 700;
             color: #FADB85;
-            margin: 28px 0 18px 8px;
-            border-left: 6px solid #ffb347;
-            padding-left: 18px;
+            margin: 24px 0 16px 6px;
+            border-left: 5px solid #ffb347;
+            padding-left: 14px;
         }
 
         .topup-grid {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
-        /* CARD baru dengan tata letak: info harga di kiri, tombol ORDER di kanan */
+        /* CARD dengan satu tombol ORDER di kanan */
         .topup-card {
             background: rgba(20, 25, 45, 0.7);
             backdrop-filter: blur(4px);
             border-radius: 60px;
-            padding: 10px 18px;
+            padding: 8px 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -177,59 +117,58 @@
         .topup-card:hover {
             background: rgba(45, 52, 85, 0.85);
             border-color: #ffb347;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
         .info-left {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             flex: 2;
-            min-width: 150px;
+            min-width: 140px;
         }
 
         .icon-badge {
             background: #1e243e;
-            width: 44px;
-            height: 44px;
+            width: 38px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 40px;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #ffc857;
         }
 
         .item-name {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: #f3e9ce;
         }
 
         .item-price {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 800;
             background: linear-gradient(135deg, #FFD966, #FFA52F);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            white-space: nowrap;
         }
 
+        /* Satu tombol ORDER di setiap item */
         .order-btn {
             background: linear-gradient(95deg, #25D366, #128C7E);
             border: none;
-            padding: 10px 24px;
+            padding: 8px 22px;
             border-radius: 40px;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: white;
             cursor: pointer;
             transition: 0.2s;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
 
         .order-btn:hover {
@@ -237,11 +176,74 @@
             transform: scale(1.02);
         }
 
+        /* ====== FORM ID dipindah ke BAWAH, dengan tulisan kecil ====== */
+        .id-forms-wrapper {
+            margin-top: 35px;
+            background: linear-gradient(135deg, #0c1020, #080b14);
+            border-radius: 32px;
+            padding: 16px 20px;
+            border: 1px solid rgba(255, 180, 70, 0.35);
+        }
+
+        .id-group {
+            margin-bottom: 16px;
+        }
+
+        .id-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .id-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #b9c3e6;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        .id-label i {
+            font-size: 0.7rem;
+            color: #ffb347;
+        }
+
+        .input-row-small {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .input-field-small {
+            flex: 1;
+            background: #1a1f32;
+            border: 1px solid #ffb34755;
+            padding: 8px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            color: #f0e7d6;
+            outline: none;
+        }
+
+        .input-field-small:focus {
+            border-color: #ffb347;
+        }
+
+        .info-tip-small {
+            font-size: 0.65rem;
+            color: #7a84aa;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
         .wa-card {
-            margin-top: 40px;
+            margin-top: 28px;
             background: linear-gradient(115deg, #0f1422, #0b0f1c);
             border-radius: 48px;
-            padding: 20px 24px;
+            padding: 16px 20px;
             text-align: center;
             border: 1px solid rgba(37, 211, 102, 0.5);
         }
@@ -249,39 +251,37 @@
         .btn-direct-wa {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             background: #25D366;
-            padding: 12px 28px;
+            padding: 10px 24px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
+            font-weight: 600;
+            font-size: 0.85rem;
             color: white;
             transition: 0.2s;
         }
 
         .btn-direct-wa:hover {
             background: #1da959;
-            transform: scale(1.02);
         }
 
         .footer-note {
-            margin-top: 22px;
+            margin-top: 18px;
             text-align: center;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #5f6c95;
-            padding-bottom: 20px;
+            padding-bottom: 16px;
         }
 
-        @media (max-width: 580px) {
-            .content-padding { padding: 16px 18px; }
-            .item-name { font-size: 0.8rem; }
-            .item-price { font-size: 1rem; }
-            .icon-badge { width: 36px; height: 36px; font-size: 1.1rem; }
-            .order-btn { padding: 6px 16px; font-size: 0.75rem; }
-            .section-title { font-size: 1.3rem; }
-            .input-row { flex-direction: column; }
-            .topup-card { justify-content: space-between; }
+        @media (max-width: 550px) {
+            .content-padding { padding: 16px; }
+            .item-name { font-size: 0.75rem; }
+            .item-price { font-size: 0.9rem; }
+            .order-btn { padding: 6px 16px; font-size: 0.7rem; }
+            .section-title { font-size: 1.2rem; }
+            .icon-badge { width: 32px; height: 32px; font-size: 1rem; }
+            .input-field-small { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -294,66 +294,67 @@
             <i class="fas fa-fire"></i> 🔥 WELCOME TO DANZ SHOP 🔥 <i class="fas fa-crown"></i>   |  
             <i class="fas fa-gamepad"></i> TOP UP ML & FF MURAH   |  
             <i class="fab fa-whatsapp"></i> FAST RESPON   |  
-            <i class="fas fa-diamond"></i> ORDER LANGSUNG   |  
+            <i class="fas fa-diamond"></i> ORDER DENGAN SATU TOMBOL   |  
             🔥 WELCOME TO DANZ SHOP 🔥
         </div>
     </div>
 
     <div class="content-padding">
-        <!-- ========= FORM KHUSUS ML : ID + SERVER ========= -->
-        <div class="id-section">
-            <div class="id-title">
-                <i class="fas fa-mobile-alt"></i>
-                <span>📱 MASUKAN ID + SERVER ML ANDA (Mobile Legends)</span>
-            </div>
-            <div class="input-row">
-                <input type="text" class="input-field" id="mlId" placeholder="ID Mobile Legends (contoh: 12345678)" autocomplete="off">
-                <input type="text" class="input-field" id="mlServer" placeholder="Server ML (contoh: 1234 / 3010)" autocomplete="off">
-            </div>
-            <div class="info-tip">
-                <i class="fas fa-info-circle"></i> Masukkan ID dan server ML kamu agar admin dapat memproses top up.
-            </div>
-        </div>
-
-        <!-- ========= FORM KHUSUS FF : ID FF ========= -->
-        <div class="id-section">
-            <div class="id-title">
-                <i class="fas fa-fire"></i>
-                <span>🔥 MASUKAN ID FF ANDA (Free Fire)</span>
-            </div>
-            <div class="input-row">
-                <input type="text" class="input-field" id="ffId" placeholder="ID Free Fire (contoh: 11223344)" autocomplete="off">
-            </div>
-            <div class="info-tip">
-                <i class="fas fa-info-circle"></i> Masukkan ID FF kamu untuk top up diamond Free Fire.
-            </div>
-        </div>
-
-        <!-- LIST TOP UP MOBILE LEGEND (dengan tombol ORDER) -->
+        <!-- LIST TOP UP MOBILE LEGEND -->
         <div class="section-title">
             <i class="fas fa-mobile-alt"></i>
             <span>LIST TOP UP MOBILE LEGEND</span>
         </div>
         <div class="topup-grid" id="mlList"></div>
 
-        <!-- LIST TOP UP FREE FIRE (dengan tombol ORDER) -->
+        <!-- LIST TOP UP FREE FIRE -->
         <div class="section-title">
             <i class="fas fa-fire"></i>
             <span>🔥 LIST TOP UP FREE FIRE 🔥</span>
         </div>
         <div class="topup-grid" id="ffList"></div>
 
-        <!-- Tombol WhatsApp Darurat (tanpa pilih item) -->
+        <!-- ========= FORM ID DI PINDAHKAN KE BAWAH (DENGAN TULISAN KECIL) ========= -->
+        <div class="id-forms-wrapper">
+            <!-- ML: ID + Server -->
+            <div class="id-group">
+                <div class="id-label">
+                    <i class="fas fa-mobile-alt"></i> Mobile Legends - ID & Server
+                </div>
+                <div class="input-row-small">
+                    <input type="text" class="input-field-small" id="mlId" placeholder="ID ML (contoh: 12345678)" autocomplete="off">
+                    <input type="text" class="input-field-small" id="mlServer" placeholder="Server ML (contoh: 1234)" autocomplete="off">
+                </div>
+                <div class="info-tip-small">
+                    <i class="fas fa-info-circle"></i> Masukkan ID dan server Mobile Legends
+                </div>
+            </div>
+
+            <!-- FF: ID FF -->
+            <div class="id-group">
+                <div class="id-label">
+                    <i class="fas fa-fire"></i> Free Fire - ID Player
+                </div>
+                <div class="input-row-small">
+                    <input type="text" class="input-field-small" id="ffId" placeholder="ID FF (contoh: 11223344)" autocomplete="off">
+                </div>
+                <div class="info-tip-small">
+                    <i class="fas fa-info-circle"></i> Masukkan ID Free Fire kamu
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol WA manual (opsional) -->
         <div class="wa-card">
-            <div class="id-title" style="justify-content: center; border-left: none; margin-bottom: 6px;">
+            <div class="id-label" style="justify-content: center; margin-bottom: 6px; font-size: 0.8rem;">
                 <i class="fab fa-whatsapp"></i> ADMIN DANZ SHOP
             </div>
             <a href="https://wa.me/6287756012848?text=Halo%20Danz%20Shop%2C%20saya%20ingin%20order%20top%20up" 
-               class="btn-direct-wa" target="_blank" id="manualWaBtn">
+               class="btn-direct-wa" target="_blank">
                 <i class="fab fa-whatsapp"></i> Chat Admin (Manual)
             </a>
-            <div class="info-tip" style="justify-content: center; margin-top: 10px;">
-                <i class="fas fa-check-circle"></i> Pilih item lalu klik tombol ORDER untuk langsung kirim ke WhatsApp.
+            <div class="info-tip-small" style="justify-content: center; margin-top: 8px;">
+                <i class="fas fa-check-circle"></i> Pilih item lalu klik ORDER untuk kirim ke WhatsApp
             </div>
         </div>
         <div class="footer-note">
@@ -365,27 +366,27 @@
 <script>
     // Data produk ML
     const mlProducts = [
-        { name: "5 DM (Diamond)", price: "1.000", rawPrice: 1000, detail: "5 Diamond" },
-        { name: "12 DM", price: "2.500", rawPrice: 2500, detail: "12 Diamond" },
-        { name: "28 DM", price: "5.500", rawPrice: 5500, detail: "28 Diamond" },
-        { name: "56 DM + Bonus", price: "11.000", rawPrice: 11000, detail: "56 Diamond + Bonus" },
-        { name: "100 DM", price: "19.000", rawPrice: 19000, detail: "100 Diamond" },
-        { name: "250 DM (Special)", price: "46.000", rawPrice: 46000, detail: "250 Diamond" },
-        { name: "400 DM + 20 Bonus", price: "73.000", rawPrice: 73000, detail: "400 Diamond + 20 Bonus" }
+        { name: "5 DM (Diamond)", price: "1.000", detail: "5 Diamond" },
+        { name: "12 DM", price: "2.500", detail: "12 Diamond" },
+        { name: "28 DM", price: "5.500", detail: "28 Diamond" },
+        { name: "56 DM + Bonus", price: "11.000", detail: "56 Diamond + Bonus" },
+        { name: "100 DM", price: "19.000", detail: "100 Diamond" },
+        { name: "250 DM (Special)", price: "46.000", detail: "250 Diamond" },
+        { name: "400 DM + 20 Bonus", price: "73.000", detail: "400 Diamond + 20 Bonus" }
     ];
 
     // Data produk FF
     const ffProducts = [
-        { name: "100 Diamond FF", price: "2.500", rawPrice: 2500, detail: "100 Diamond FF" },
-        { name: "210 Diamond FF", price: "5.000", rawPrice: 5000, detail: "210 Diamond FF" },
-        { name: "355 Diamond FF", price: "8.500", rawPrice: 8500, detail: "355 Diamond FF" },
-        { name: "560 Diamond FF", price: "13.000", rawPrice: 13000, detail: "560 Diamond FF" },
-        { name: "720 Diamond FF (Bonus)", price: "16.000", rawPrice: 16000, detail: "720 Diamond FF + Bonus" },
-        { name: "1400 Diamond FF", price: "30.000", rawPrice: 30000, detail: "1400 Diamond FF" },
-        { name: "2180 Diamond FF (Extra)", price: "46.000", rawPrice: 46000, detail: "2180 Diamond FF" }
+        { name: "100 Diamond FF", price: "2.500", detail: "100 Diamond FF" },
+        { name: "210 Diamond FF", price: "5.000", detail: "210 Diamond FF" },
+        { name: "355 Diamond FF", price: "8.500", detail: "355 Diamond FF" },
+        { name: "560 Diamond FF", price: "13.000", detail: "560 Diamond FF" },
+        { name: "720 Diamond FF (Bonus)", price: "16.000", detail: "720 Diamond FF + Bonus" },
+        { name: "1400 Diamond FF", price: "30.000", detail: "1400 Diamond FF" },
+        { name: "2180 Diamond FF (Extra)", price: "46.000", detail: "2180 Diamond FF" }
     ];
 
-    // Fungsi untuk mengirim pesan WhatsApp berdasarkan game & data produk
+    // Fungsi kirim order ke WhatsApp (satu tombol order di setiap item)
     function sendOrderToWA(gameType, itemName, itemPrice) {
         const adminNumber = '6287756012848';
         
@@ -394,7 +395,7 @@
             const mlServer = document.getElementById('mlServer')?.value.trim() || '';
             
             if (mlId === '' || mlServer === '') {
-                alert('⚠️ Mohon lengkapi ID ML dan Server ML anda terlebih dahulu! (Kolom ID + Server Mobile Legends)');
+                alert('⚠️ Mohon lengkapi ID ML dan Server ML di bagian bawah form!');
                 return false;
             }
             
@@ -405,7 +406,7 @@
         else if (gameType === 'ff') {
             const ffId = document.getElementById('ffId')?.value.trim() || '';
             if (ffId === '') {
-                alert('⚠️ Harap masukkan ID Free Fire (FF) anda terlebih dahulu!');
+                alert('⚠️ Harap masukkan ID Free Fire (FF) di bagian bawah form!');
                 return false;
             }
             const message = `Halo Admin Danz Shop%0A%0A🔥 *ORDER TOP UP FREE FIRE* 🔥%0A%0A🎮 *Item:* ${itemName}%0A💎 *Harga:* Rp ${itemPrice}%0A🆔 *ID FF:* ${ffId}%0A%0ASegera diproses, makasih Danz Shop!`;
@@ -415,7 +416,7 @@
         return false;
     }
 
-    // Membuat card dengan tombol ORDER terpisah
+    // Membuat list produk dengan SATU TOMBOL ORDER per item
     function buildProductListWithOrder(containerId, products, gameType) {
         const container = document.getElementById(containerId);
         if (!container) return;
@@ -425,7 +426,7 @@
             const card = document.createElement('div');
             card.className = 'topup-card';
             
-            // Bagian kiri: info produk
+            // Kiri: icon + nama + harga
             const leftDiv = document.createElement('div');
             leftDiv.className = 'info-left';
             leftDiv.innerHTML = `
@@ -434,12 +435,12 @@
                 <div class="item-price">Rp ${prod.price}</div>
             `;
             
-            // Tombol ORDER
+            // Tombol ORDER (satu tombol per item)
             const orderBtn = document.createElement('button');
             orderBtn.className = 'order-btn';
             orderBtn.innerHTML = '<i class="fab fa-whatsapp"></i> ORDER';
             
-            // Event klik pada tombol ORDER
+            // Event klik order
             orderBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 sendOrderToWA(gameType, prod.name, prod.price);
@@ -451,7 +452,7 @@
         });
     }
 
-    // Load dan simpan data ID ke localStorage untuk kenyamanan user
+    // Load & simpan data ID ke localStorage agar tidak hilang (opsional)
     function initLocalStorage() {
         const mlIdInput = document.getElementById('mlId');
         const mlServerInput = document.getElementById('mlServer');
@@ -466,13 +467,12 @@
         ffIdInput.addEventListener('blur', () => localStorage.setItem('danz_ffId', ffIdInput.value));
     }
     
-    // Render semua list
+    // Render kedua list
     buildProductListWithOrder('mlList', mlProducts, 'ml');
     buildProductListWithOrder('ffList', ffProducts, 'ff');
     initLocalStorage();
     
-    // Opsional: manual WA tetap bisa diakses
-    console.log("Danz Shop ready | Pilih item, klik ORDER untuk kirim ke WhatsApp dengan ID yang sudah diisi");
+    console.log("Danz Shop siap | Form ID di bawah, setiap item punya 1 tombol ORDER");
 </script>
 </body>
 </html>
