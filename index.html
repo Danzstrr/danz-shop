@@ -98,22 +98,30 @@
             gap: 10px;
         }
 
+        /* Card item (tanpa tombol order di dalamnya) */
         .topup-card {
             background: rgba(20, 25, 45, 0.7);
             backdrop-filter: blur(4px);
             border-radius: 60px;
-            padding: 8px 18px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border: 1px solid rgba(255, 190, 80, 0.3);
-            gap: 12px;
-            flex-wrap: wrap;
+            transition: 0.2s;
+            cursor: pointer;
         }
 
         .topup-card:hover {
             background: rgba(45, 52, 85, 0.85);
             border-color: #ffb347;
+            transform: translateX(4px);
+        }
+
+        .topup-card.selected {
+            background: rgba(255, 180, 70, 0.25);
+            border: 2px solid #ffb347;
+            box-shadow: 0 0 10px rgba(255, 180, 70, 0.4);
         }
 
         .info-left {
@@ -126,8 +134,8 @@
 
         .icon-badge {
             background: #1e243e;
-            width: 38px;
-            height: 38px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -137,13 +145,13 @@
         }
 
         .item-name {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: #f3e9ce;
         }
 
         .item-price {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 800;
             background: linear-gradient(135deg, #FFD966, #FFA52F);
             -webkit-background-clip: text;
@@ -151,26 +159,7 @@
             color: transparent;
         }
 
-        .order-btn {
-            background: linear-gradient(95deg, #25D366, #128C7E);
-            border: none;
-            padding: 8px 22px;
-            border-radius: 40px;
-            font-weight: bold;
-            font-size: 0.85rem;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.2s;
-        }
-
-        .order-btn:hover {
-            background: linear-gradient(95deg, #20b859, #0e6b5e);
-            transform: scale(1.02);
-        }
-
+        /* Radio / pilih game tersirat dari section yang dipilih, tapi kita simpan state selectedItem */
         .id-forms-wrapper {
             margin-top: 35px;
             background: linear-gradient(135deg, #0c1020, #080b14);
@@ -227,8 +216,45 @@
             gap: 5px;
         }
 
-        .wa-card {
+        /* TOMBOL ORDER SATU di BAWAH */
+        .single-order-section {
             margin-top: 28px;
+            text-align: center;
+        }
+
+        .global-order-btn {
+            background: linear-gradient(95deg, #25D366, #128C7E);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: white;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.2s;
+            box-shadow: 0 6px 14px rgba(37,211,102,0.3);
+        }
+
+        .global-order-btn:hover {
+            background: linear-gradient(95deg, #20b859, #0e6b5e);
+            transform: scale(1.02);
+        }
+
+        .selected-info {
+            margin-top: 10px;
+            font-size: 0.7rem;
+            color: #ffd966;
+            background: rgba(0,0,0,0.4);
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 30px;
+        }
+
+        .wa-card {
+            margin-top: 20px;
             background: linear-gradient(115deg, #0f1422, #0b0f1c);
             border-radius: 48px;
             padding: 16px 20px;
@@ -264,31 +290,30 @@
 
         @media (max-width: 550px) {
             .content-padding { padding: 16px; }
-            .item-name { font-size: 0.75rem; }
-            .item-price { font-size: 0.9rem; }
-            .order-btn { padding: 6px 16px; font-size: 0.7rem; }
+            .item-name { font-size: 0.8rem; }
+            .item-price { font-size: 0.95rem; }
+            .global-order-btn { padding: 10px 24px; font-size: 0.9rem; }
             .section-title { font-size: 1.2rem; }
+            .icon-badge { width: 34px; height: 34px; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 <div class="shop-container">
-    <!-- Banner dari link catbox -->
     <img class="hero-img" src="https://files.catbox.moe/m212ge.jpg" alt="Danz Shop Banner" onerror="this.src='https://via.placeholder.com/900x200?text=DANZ+SHOP'">
     
-    <!-- Running text welcome -->
     <div class="running-text-area">
         <div class="running-text">
             <i class="fas fa-fire"></i> 🔥 WELCOME TO DANZ SHOP 🔥 <i class="fas fa-crown"></i>   |  
             <i class="fas fa-gamepad"></i> TOP UP ML & FF MURAH   |  
             <i class="fab fa-whatsapp"></i> FAST RESPON   |  
-            <i class="fas fa-diamond"></i> ORDER SATU TOMBOL   |  
+            <i class="fas fa-diamond"></i> PILIH ITEM LALU ORDER   |  
             🔥 WELCOME TO DANZ SHOP 🔥
         </div>
     </div>
 
     <div class="content-padding">
-        <!-- LIST TOP UP MOBILE LEGEND -->
+        <!-- LIST TOP UP MOBILE LEGEND (tanpa tombol order di card) -->
         <div class="section-title">
             <i class="fas fa-mobile-alt"></i>
             <span>LIST TOP UP MOBILE LEGEND</span>
@@ -330,7 +355,17 @@
             </div>
         </div>
 
-        <!-- Tombol WA manual -->
+        <!-- SATU TOMBOL ORDER DI BAWAH -->
+        <div class="single-order-section">
+            <button class="global-order-btn" id="globalOrderBtn">
+                <i class="fab fa-whatsapp"></i> ORDER SEKARANG
+            </button>
+            <div id="selectedItemInfo" class="selected-info">
+                <i class="fas fa-info-circle"></i> Belum ada item yang dipilih
+            </div>
+        </div>
+
+        <!-- Tombol WA manual (opsional) -->
         <div class="wa-card">
             <div class="id-label" style="justify-content: center; margin-bottom: 6px;">
                 <i class="fab fa-whatsapp"></i> ADMIN DANZ SHOP
@@ -340,7 +375,7 @@
                 <i class="fab fa-whatsapp"></i> Chat Admin (Manual)
             </a>
             <div class="info-tip-small" style="justify-content: center; margin-top: 8px;">
-                <i class="fas fa-check-circle"></i> Pilih item lalu klik ORDER untuk kirim ke WhatsApp
+                <i class="fas fa-check-circle"></i> Klik item untuk memilih, lalu tekan ORDER SEKARANG
             </div>
         </div>
         <div class="footer-note">
@@ -352,58 +387,30 @@
 <script>
     // Data produk ML
     const mlProducts = [
-        { name: "5 DM (Diamond)", price: "1.000" },
-        { name: "12 DM", price: "2.500" },
-        { name: "28 DM", price: "5.500" },
-        { name: "56 DM + Bonus", price: "11.000" },
-        { name: "100 DM", price: "19.000" },
-        { name: "250 DM (Special)", price: "46.000" },
-        { name: "400 DM + 20 Bonus", price: "73.000" }
+        { name: "5 DM (Diamond)", price: "1.000", gameType: "ml" },
+        { name: "12 DM", price: "2.500", gameType: "ml" },
+        { name: "28 DM", price: "5.500", gameType: "ml" },
+        { name: "56 DM + Bonus", price: "11.000", gameType: "ml" },
+        { name: "100 DM", price: "19.000", gameType: "ml" },
+        { name: "250 DM (Special)", price: "46.000", gameType: "ml" },
+        { name: "400 DM + 20 Bonus", price: "73.000", gameType: "ml" }
     ];
 
     // Data produk FF
     const ffProducts = [
-        { name: "100 Diamond FF", price: "2.500" },
-        { name: "210 Diamond FF", price: "5.000" },
-        { name: "355 Diamond FF", price: "8.500" },
-        { name: "560 Diamond FF", price: "13.000" },
-        { name: "720 Diamond FF (Bonus)", price: "16.000" },
-        { name: "1400 Diamond FF", price: "30.000" },
-        { name: "2180 Diamond FF (Extra)", price: "46.000" }
+        { name: "100 Diamond FF", price: "2.500", gameType: "ff" },
+        { name: "210 Diamond FF", price: "5.000", gameType: "ff" },
+        { name: "355 Diamond FF", price: "8.500", gameType: "ff" },
+        { name: "560 Diamond FF", price: "13.000", gameType: "ff" },
+        { name: "720 Diamond FF (Bonus)", price: "16.000", gameType: "ff" },
+        { name: "1400 Diamond FF", price: "30.000", gameType: "ff" },
+        { name: "2180 Diamond FF (Extra)", price: "46.000", gameType: "ff" }
     ];
 
-    // Fungsi kirim order ke WhatsApp
-    function sendOrderToWA(gameType, itemName, itemPrice) {
-        const adminNumber = '6287756012848';
-        
-        if (gameType === 'ml') {
-            const mlId = document.getElementById('mlId')?.value.trim() || '';
-            const mlServer = document.getElementById('mlServer')?.value.trim() || '';
-            
-            if (mlId === '' || mlServer === '') {
-                alert('⚠️ Mohon lengkapi ID ML dan Server ML di bagian bawah form!');
-                return false;
-            }
-            
-            const message = `Halo Admin Danz Shop%0A%0A✨ *ORDER TOP UP MOBILE LEGENDS* ✨%0A%0A📱 *Item:* ${itemName}%0A💰 *Harga:* Rp ${itemPrice}%0A🆔 *ID ML:* ${mlId}%0A🌐 *Server:* ${mlServer}%0A%0A✅ Mohon diproses, terima kasih!`;
-            window.open(`https://wa.me/${adminNumber}?text=${message}`, '_blank');
-            return true;
-        } 
-        else if (gameType === 'ff') {
-            const ffId = document.getElementById('ffId')?.value.trim() || '';
-            if (ffId === '') {
-                alert('⚠️ Harap masukkan ID Free Fire (FF) di bagian bawah form!');
-                return false;
-            }
-            const message = `Halo Admin Danz Shop%0A%0A🔥 *ORDER TOP UP FREE FIRE* 🔥%0A%0A🎮 *Item:* ${itemName}%0A💎 *Harga:* Rp ${itemPrice}%0A🆔 *ID FF:* ${ffId}%0A%0ASegera diproses, makasih Danz Shop!`;
-            window.open(`https://wa.me/${adminNumber}?text=${message}`, '_blank');
-            return true;
-        }
-        return false;
-    }
+    let selectedItem = null; // { name, price, gameType }
 
-    // Membuat list produk dengan tombol ORDER per item
-    function buildProductList(containerId, products, gameType) {
+    // Membuat list item (tanpa tombol order, hanya card yang bisa diklik untuk memilih)
+    function buildSelectableList(containerId, products) {
         const container = document.getElementById(containerId);
         if (!container) return;
         container.innerHTML = '';
@@ -411,34 +418,94 @@
         products.forEach(prod => {
             const card = document.createElement('div');
             card.className = 'topup-card';
-            
-            // Bagian kiri: icon + nama + harga
-            const leftDiv = document.createElement('div');
-            leftDiv.className = 'info-left';
-            leftDiv.innerHTML = `
-                <div class="icon-badge"><i class="fas ${gameType === 'ml' ? 'fa-diamond' : 'fa-coins'}"></i></div>
-                <div class="item-name">${prod.name}</div>
-                <div class="item-price">Rp ${prod.price}</div>
+            card.innerHTML = `
+                <div class="info-left">
+                    <div class="icon-badge"><i class="fas ${prod.gameType === 'ml' ? 'fa-diamond' : 'fa-coins'}"></i></div>
+                    <div class="item-name">${prod.name}</div>
+                    <div class="item-price">Rp ${prod.price}</div>
+                </div>
             `;
-            
-            // Tombol ORDER
-            const orderBtn = document.createElement('button');
-            orderBtn.className = 'order-btn';
-            orderBtn.innerHTML = '<i class="fab fa-whatsapp"></i> ORDER';
-            
-            // Event klik order
-            orderBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                sendOrderToWA(gameType, prod.name, prod.price);
+            // Event klik untuk memilih item
+            card.addEventListener('click', () => {
+                // Hapus class selected dari semua card
+                document.querySelectorAll('.topup-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                selectedItem = {
+                    name: prod.name,
+                    price: prod.price,
+                    gameType: prod.gameType
+                };
+                // Update info di tombol order
+                const infoDiv = document.getElementById('selectedItemInfo');
+                infoDiv.innerHTML = `<i class="fas fa-check-circle"></i> Dipilih: ${prod.name} - Rp ${prod.price}`;
             });
-            
-            card.appendChild(leftDiv);
-            card.appendChild(orderBtn);
             container.appendChild(card);
         });
     }
 
-    // Load & simpan data ID ke localStorage (nyaman untuk user)
+    // Fungsi konfirmasi sebelum kirim ke WA
+    function showConfirmationAndSend() {
+        if (!selectedItem) {
+            alert('⚠️ Silakan pilih item top up terlebih dahulu!');
+            return;
+        }
+
+        const gameType = selectedItem.gameType;
+        const itemName = selectedItem.name;
+        const itemPrice = selectedItem.price;
+        
+        // Ambil data ID berdasarkan game
+        let mlId = '', mlServer = '', ffId = '';
+        let isValid = true;
+        
+        if (gameType === 'ml') {
+            mlId = document.getElementById('mlId')?.value.trim() || '';
+            mlServer = document.getElementById('mlServer')?.value.trim() || '';
+            if (mlId === '' || mlServer === '') {
+                alert('⚠️ Mohon lengkapi ID ML dan Server ML di bagian bawah form!');
+                return;
+            }
+        } else if (gameType === 'ff') {
+            ffId = document.getElementById('ffId')?.value.trim() || '';
+            if (ffId === '') {
+                alert('⚠️ Harap masukkan ID Free Fire (FF) di bagian bawah form!');
+                return;
+            }
+        }
+        
+        // Tampilkan konfirmasi "APAKAH ID SUDAH BENAR?" dengan SweetAlert style (confirm box custom)
+        let confirmationMessage = '';
+        if (gameType === 'ml') {
+            confirmationMessage = `📱 *MOBILE LEGENDS*\n\nItem: ${itemName}\nHarga: Rp ${itemPrice}\nID ML: ${mlId}\nServer: ${mlServer}\n\n⚠️ APAKAH ID SUDAH BENAR?`;
+        } else {
+            confirmationMessage = `🔥 *FREE FIRE*\n\nItem: ${itemName}\nHarga: Rp ${itemPrice}\nID FF: ${ffId}\n\n⚠️ APAKAH ID SUDAH BENAR?`;
+        }
+        
+        // Konfirmasi dengan dialog (confirm box)
+        const userConfirmed = confirm(confirmationMessage + '\n\nTekan OK jika sudah benar, Batal untuk membatalkan.');
+        if (!userConfirmed) {
+            return; // batal
+        }
+        
+        // Kirim ke WhatsApp
+        sendOrderToWA(gameType, itemName, itemPrice, mlId, mlServer, ffId);
+    }
+    
+    // Fungsi kirim pesanan ke WhatsApp
+    function sendOrderToWA(gameType, itemName, itemPrice, mlId, mlServer, ffId) {
+        const adminNumber = '6287756012848';
+        
+        if (gameType === 'ml') {
+            const message = `Halo Admin Danz Shop%0A%0A✨ *ORDER TOP UP MOBILE LEGENDS* ✨%0A%0A📱 *Item:* ${itemName}%0A💰 *Harga:* Rp ${itemPrice}%0A🆔 *ID ML:* ${mlId}%0A🌐 *Server:* ${mlServer}%0A%0A✅ Mohon diproses, terima kasih!`;
+            window.open(`https://wa.me/${adminNumber}?text=${message}`, '_blank');
+        } 
+        else if (gameType === 'ff') {
+            const message = `Halo Admin Danz Shop%0A%0A🔥 *ORDER TOP UP FREE FIRE* 🔥%0A%0A🎮 *Item:* ${itemName}%0A💎 *Harga:* Rp ${itemPrice}%0A🆔 *ID FF:* ${ffId}%0A%0ASegera diproses, makasih Danz Shop!`;
+            window.open(`https://wa.me/${adminNumber}?text=${message}`, '_blank');
+        }
+    }
+    
+    // Load & simpan data ID ke localStorage
     function initLocalStorage() {
         const mlIdInput = document.getElementById('mlId');
         const mlServerInput = document.getElementById('mlServer');
@@ -453,12 +520,16 @@
         ffIdInput.addEventListener('blur', () => localStorage.setItem('danz_ffId', ffIdInput.value));
     }
     
-    // Render semua list
-    buildProductList('mlList', mlProducts, 'ml');
-    buildProductList('ffList', ffProducts, 'ff');
+    // Render semua list (tanpa tombol order di card)
+    buildSelectableList('mlList', mlProducts);
+    buildSelectableList('ffList', ffProducts);
     initLocalStorage();
     
-    console.log("Danz Shop siap | Form ID di bawah, setiap item punya 1 tombol ORDER");
+    // Event tombol ORDER SATU di bawah
+    const globalOrderBtn = document.getElementById('globalOrderBtn');
+    globalOrderBtn.addEventListener('click', showConfirmationAndSend);
+    
+    console.log("Danz Shop siap | Pilih item, lalu klik ORDER SEKARANG, akan muncul konfirmasi ID");
 </script>
 </body>
 </html>
