@@ -33,7 +33,7 @@
             box-shadow: 0 30px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255, 200, 100, 0.3);
             overflow: hidden;
             text-align: center;
-            padding: 32px 24px 40px;
+            padding: 42px 28px 48px;
             transition: all 0.3s ease;
             animation: fadeInUp 0.6s ease-out;
         }
@@ -49,34 +49,44 @@
             }
         }
 
-        .logo-area {
-            margin-bottom: 24px;
+        /* GANTI FOTO DENGAN TEXT (LOGO TEKS BESAR) */
+        .text-logo {
+            margin-bottom: 20px;
         }
 
-        .logo-img {
-            width: 100%;
-            max-width: 280px;
-            border-radius: 32px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-            border: 2px solid rgba(255, 180, 70, 0.6);
-            transition: transform 0.2s;
-        }
-
-        .brand-name {
-            font-size: 2rem;
+        .main-title {
+            font-size: 3rem;
             font-weight: 800;
-            margin-top: 20px;
             background: linear-gradient(135deg, #FFDF85, #FFB347);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .sub-title {
+            font-size: 1.2rem;
+            color: #ffd966;
+            margin-top: 8px;
+            font-weight: 500;
             letter-spacing: 1px;
+        }
+
+        .brand-name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-top: 16px;
+            background: linear-gradient(135deg, #FFF2CC, #FFC107);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .sub {
             font-size: 0.85rem;
             color: #a9b7e0;
-            margin-top: 6px;
+            margin-top: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -123,27 +133,36 @@
         }
 
         @media (max-width: 480px) {
-            .splash-container { padding: 24px 20px 32px; }
-            .brand-name { font-size: 1.6rem; }
+            .splash-container { padding: 32px 20px 36px; }
+            .main-title { font-size: 2.2rem; }
+            .brand-name { font-size: 1.8rem; }
             .next-btn { padding: 12px 24px; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
     <div class="splash-container" id="splashScreen">
-        <div class="logo-area">
-            <!-- FOTO YANG DIBERIKAN (DANZ GAME & Dola AI) dari file 356367.png -->
-            <img class="logo-img" src="356367.png" alt="Danz Game & Dola AI" onerror="this.src='https://via.placeholder.com/280x280?text=DANZ+GAME+%7C+Dola+AI'">
+        <!-- TEKS (GANTI FOTO) -->
+        <div class="text-logo">
+            <div class="main-title">
+                <i class="fas fa-crown"></i> DANZ <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="sub-title">
+                GAME STORE
+            </div>
         </div>
+        
         <div class="brand-name">
             DANZ GAME
         </div>
         <div class="sub">
             <i class="fas fa-robot"></i> Dola AI <i class="fas fa-crown"></i>
         </div>
+        
         <button class="next-btn" id="nextButton">
             <i class="fas fa-arrow-right"></i> NEXT <i class="fas fa-store"></i>
         </button>
+        
         <div class="dola-badge">
             <i class="fas fa-magic"></i> Powered by Dola AI Assistant
         </div>
@@ -156,17 +175,6 @@
         // Saat tombol NEXT di klik, redirect ke halaman utama web topup (Danz Shop)
         const nextBtn = document.getElementById('nextButton');
         nextBtn.addEventListener('click', () => {
-            // Membuka halaman utama TOP UP (konten lengkap dengan list, id form, order)
-            // Arahkan ke halaman yang sama dengan URL hash atau langsung ganti document write
-            // Karena kita ingin lanjut ke WEB utama, kita akan mengganti seluruh body dengan konten utama.
-            // Tapi lebih baik redirect ke halaman utama atau render konten baru di sini.
-            // Untuk pengalaman seamless, kita akan ganti inner HTML body dengan main shop page.
-            // Namun agar tidak kehilangan style, kita akan replace seluruh document.
-            // Tapi karena ini single page sederhana, kita langsung redirect ke '#' lalu render? 
-            // Alternatif: tampilkan main content di bawah splash, namun permintaan: "lanjut ke web".
-            // Jadi kita akan ganti isi body dengan halaman utama toko.
-            
-            // Simpan animasi kecil
             nextBtn.innerText = "Loading...";
             nextBtn.disabled = true;
             
@@ -254,7 +262,6 @@
 </script>
 </body>
 </html>`;
-                // re-run styling tidak masalah
             }, 300);
         });
     </script>
