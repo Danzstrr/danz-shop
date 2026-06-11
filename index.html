@@ -24,7 +24,7 @@
         }
 
         .shop-container {
-            max-width: 850px;
+            max-width: 900px;
             width: 100%;
             background: rgba(10, 14, 23, 0.85);
             backdrop-filter: blur(2px);
@@ -159,22 +159,23 @@
             gap: 12px;
         }
 
+        /* CARD baru dengan tata letak: info harga di kiri, tombol ORDER di kanan */
         .topup-card {
             background: rgba(20, 25, 45, 0.7);
             backdrop-filter: blur(4px);
             border-radius: 60px;
-            padding: 12px 20px;
+            padding: 10px 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border: 1px solid rgba(255, 190, 80, 0.3);
             transition: 0.2s;
-            cursor: pointer;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .topup-card:hover {
-            background: rgba(45, 52, 85, 0.9);
-            transform: translateX(5px);
+            background: rgba(45, 52, 85, 0.85);
             border-color: #ffb347;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
@@ -183,6 +184,8 @@
             display: flex;
             align-items: center;
             gap: 16px;
+            flex: 2;
+            min-width: 150px;
         }
 
         .icon-badge {
@@ -198,18 +201,40 @@
         }
 
         .item-name {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #f3e9ce;
         }
 
         .item-price {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 800;
             background: linear-gradient(135deg, #FFD966, #FFA52F);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            white-space: nowrap;
+        }
+
+        .order-btn {
+            background: linear-gradient(95deg, #25D366, #128C7E);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .order-btn:hover {
+            background: linear-gradient(95deg, #20b859, #0e6b5e);
+            transform: scale(1.02);
         }
 
         .wa-card {
@@ -226,11 +251,11 @@
             align-items: center;
             gap: 12px;
             background: #25D366;
-            padding: 14px 32px;
+            padding: 12px 28px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: white;
             transition: 0.2s;
         }
@@ -248,26 +273,28 @@
             padding-bottom: 20px;
         }
 
-        @media (max-width: 550px) {
+        @media (max-width: 580px) {
             .content-padding { padding: 16px 18px; }
-            .item-name { font-size: 0.85rem; }
+            .item-name { font-size: 0.8rem; }
             .item-price { font-size: 1rem; }
-            .icon-badge { width: 36px; height: 36px; font-size: 1.2rem; }
+            .icon-badge { width: 36px; height: 36px; font-size: 1.1rem; }
+            .order-btn { padding: 6px 16px; font-size: 0.75rem; }
             .section-title { font-size: 1.3rem; }
             .input-row { flex-direction: column; }
+            .topup-card { justify-content: space-between; }
         }
     </style>
 </head>
 <body>
 <div class="shop-container">
-    <img class="hero-img" src="https://files.catbox.moe/m212ge.jpg" alt="Danz Shop Banner" onerror="this.src='https://via.placeholder.com/850x200?text=DANZ+SHOP'">
+    <img class="hero-img" src="https://files.catbox.moe/m212ge.jpg" alt="Danz Shop Banner" onerror="this.src='https://via.placeholder.com/900x200?text=DANZ+SHOP'">
 
     <div class="running-text-area">
         <div class="running-text">
             <i class="fas fa-fire"></i> 🔥 WELCOME TO DANZ SHOP 🔥 <i class="fas fa-crown"></i>   |  
             <i class="fas fa-gamepad"></i> TOP UP ML & FF MURAH   |  
             <i class="fab fa-whatsapp"></i> FAST RESPON   |  
-            <i class="fas fa-diamond"></i> DIAMOND INSTANT   |  
+            <i class="fas fa-diamond"></i> ORDER LANGSUNG   |  
             🔥 WELCOME TO DANZ SHOP 🔥
         </div>
     </div>
@@ -302,23 +329,21 @@
             </div>
         </div>
 
-        <!-- LIST TOP UP MOBILE LEGEND (setiap harga bisa klik -> WA) -->
+        <!-- LIST TOP UP MOBILE LEGEND (dengan tombol ORDER) -->
         <div class="section-title">
             <i class="fas fa-mobile-alt"></i>
             <span>LIST TOP UP MOBILE LEGEND</span>
         </div>
-        <div class="topup-grid" id="mlList">
-            <!-- Data ML akan di generate via JS tapi bisa manual, tapi lebih baik via JS untuk memudahkan pengiriman -->
-        </div>
+        <div class="topup-grid" id="mlList"></div>
 
-        <!-- LIST TOP UP FREE FIRE -->
+        <!-- LIST TOP UP FREE FIRE (dengan tombol ORDER) -->
         <div class="section-title">
             <i class="fas fa-fire"></i>
             <span>🔥 LIST TOP UP FREE FIRE 🔥</span>
         </div>
         <div class="topup-grid" id="ffList"></div>
 
-        <!-- Tomol WhatsApp Darurat (manual) -->
+        <!-- Tombol WhatsApp Darurat (tanpa pilih item) -->
         <div class="wa-card">
             <div class="id-title" style="justify-content: center; border-left: none; margin-bottom: 6px;">
                 <i class="fab fa-whatsapp"></i> ADMIN DANZ SHOP
@@ -328,7 +353,7 @@
                 <i class="fab fa-whatsapp"></i> Chat Admin (Manual)
             </a>
             <div class="info-tip" style="justify-content: center; margin-top: 10px;">
-                <i class="fas fa-check-circle"></i> Klik daftar harga di atas untuk langsung kirim pesanan + ID ke WhatsApp
+                <i class="fas fa-check-circle"></i> Pilih item lalu klik tombol ORDER untuk langsung kirim ke WhatsApp.
             </div>
         </div>
         <div class="footer-note">
@@ -338,7 +363,7 @@
 </div>
 
 <script>
-    // Data produk ML (nama & harga)
+    // Data produk ML
     const mlProducts = [
         { name: "5 DM (Diamond)", price: "1.000", rawPrice: 1000, detail: "5 Diamond" },
         { name: "12 DM", price: "2.500", rawPrice: 2500, detail: "12 Diamond" },
@@ -360,42 +385,8 @@
         { name: "2180 Diamond FF (Extra)", price: "46.000", rawPrice: 46000, detail: "2180 Diamond FF" }
     ];
 
-    // Fungsi untuk membuat card dan menambahkan event klik (langsung ke WA)
-    function buildProductList(containerId, products, gameType) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = '';
-        products.forEach(prod => {
-            const card = document.createElement('div');
-            card.className = 'topup-card';
-            // data atribut untuk memudahkan
-            card.setAttribute('data-name', prod.name);
-            card.setAttribute('data-price', prod.price);
-            card.setAttribute('data-rawprice', prod.rawPrice);
-            card.setAttribute('data-detail', prod.detail);
-            card.setAttribute('data-game', gameType);
-            
-            // inner HTML card
-            card.innerHTML = `
-                <div class="info-left">
-                    <div class="icon-badge"><i class="fas ${gameType === 'ml' ? 'fa-diamond' : 'fa-coins'}"></i></div>
-                    <div class="item-name">${prod.name}</div>
-                </div>
-                <div class="item-price">Rp ${prod.price}</div>
-            `;
-            // Event klik -> kirim ke WA dengan data ID yang sudah diisi
-            card.addEventListener('click', (e) => {
-                e.stopPropagation();
-                sendOrderToWA(gameType, prod.name, prod.price);
-            });
-            container.appendChild(card);
-        });
-    }
-
-    // Fungsi untuk mengirim pesan ke WhatsApp (menggabungkan data ID yang sudah dimasukkan user)
+    // Fungsi untuk mengirim pesan WhatsApp berdasarkan game & data produk
     function sendOrderToWA(gameType, itemName, itemPrice) {
-        // Ambil data berdasarkan game
-        let waMessage = '';
         const adminNumber = '6287756012848';
         
         if (gameType === 'ml') {
@@ -403,53 +394,85 @@
             const mlServer = document.getElementById('mlServer')?.value.trim() || '';
             
             if (mlId === '' || mlServer === '') {
-                // Tampilkan notif manis dengan alert (bisa pakai toast sederhana)
                 alert('⚠️ Mohon lengkapi ID ML dan Server ML anda terlebih dahulu! (Kolom ID + Server Mobile Legends)');
-                return;
+                return false;
             }
             
-            waMessage = `Halo Admin Danz Shop%0A%0A✨ *ORDER TOP UP MOBILE LEGENDS* ✨%0A%0A📱 *Item:* ${itemName}%0A💰 *Harga:* Rp ${itemPrice}%0A🆔 *ID ML:* ${mlId}%0A🌐 *Server:* ${mlServer}%0A%0A✅ Mohon diproses, terima kasih!`;
+            const message = `Halo Admin Danz Shop%0A%0A✨ *ORDER TOP UP MOBILE LEGENDS* ✨%0A%0A📱 *Item:* ${itemName}%0A💰 *Harga:* Rp ${itemPrice}%0A🆔 *ID ML:* ${mlId}%0A🌐 *Server:* ${mlServer}%0A%0A✅ Mohon diproses, terima kasih!`;
+            window.open(`https://wa.me/${adminNumber}?text=${message}`, '_blank');
+            return true;
         } 
         else if (gameType === 'ff') {
             const ffId = document.getElementById('ffId')?.value.trim() || '';
             if (ffId === '') {
                 alert('⚠️ Harap masukkan ID Free Fire (FF) anda terlebih dahulu!');
-                return;
+                return false;
             }
-            waMessage = `Halo Admin Danz Shop%0A%0A🔥 *ORDER TOP UP FREE FIRE* 🔥%0A%0A🎮 *Item:* ${itemName}%0A💎 *Harga:* Rp ${itemPrice}%0A🆔 *ID FF:* ${ffId}%0A%0ASegera diproses, makasih Danz Shop!`;
+            const message = `Halo Admin Danz Shop%0A%0A🔥 *ORDER TOP UP FREE FIRE* 🔥%0A%0A🎮 *Item:* ${itemName}%0A💎 *Harga:* Rp ${itemPrice}%0A🆔 *ID FF:* ${ffId}%0A%0ASegera diproses, makasih Danz Shop!`;
+            window.open(`https://wa.me/${adminNumber}?text=${message}`, '_blank');
+            return true;
         }
-        
-        if (waMessage) {
-            const waUrl = `https://wa.me/${adminNumber}?text=${waMessage}`;
-            window.open(waUrl, '_blank');
-        }
+        return false;
     }
 
-    // Inisialisasi daftar produk dengan event handler
-    buildProductList('mlList', mlProducts, 'ml');
-    buildProductList('ffList', ffProducts, 'ff');
+    // Membuat card dengan tombol ORDER terpisah
+    function buildProductListWithOrder(containerId, products, gameType) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = '';
+        
+        products.forEach(prod => {
+            const card = document.createElement('div');
+            card.className = 'topup-card';
+            
+            // Bagian kiri: info produk
+            const leftDiv = document.createElement('div');
+            leftDiv.className = 'info-left';
+            leftDiv.innerHTML = `
+                <div class="icon-badge"><i class="fas ${gameType === 'ml' ? 'fa-diamond' : 'fa-coins'}"></i></div>
+                <div class="item-name">${prod.name}</div>
+                <div class="item-price">Rp ${prod.price}</div>
+            `;
+            
+            // Tombol ORDER
+            const orderBtn = document.createElement('button');
+            orderBtn.className = 'order-btn';
+            orderBtn.innerHTML = '<i class="fab fa-whatsapp"></i> ORDER';
+            
+            // Event klik pada tombol ORDER
+            orderBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                sendOrderToWA(gameType, prod.name, prod.price);
+            });
+            
+            card.appendChild(leftDiv);
+            card.appendChild(orderBtn);
+            container.appendChild(card);
+        });
+    }
 
-    // Opsional: Simpan data ML & FF ke localStorage kalau mau (tidak wajib, tapi user experience)
-    const mlIdInput = document.getElementById('mlId');
-    const mlServerInput = document.getElementById('mlServer');
-    const ffIdInput = document.getElementById('ffId');
+    // Load dan simpan data ID ke localStorage untuk kenyamanan user
+    function initLocalStorage() {
+        const mlIdInput = document.getElementById('mlId');
+        const mlServerInput = document.getElementById('mlServer');
+        const ffIdInput = document.getElementById('ffId');
+        
+        if (localStorage.getItem('danz_mlId')) mlIdInput.value = localStorage.getItem('danz_mlId');
+        if (localStorage.getItem('danz_mlServer')) mlServerInput.value = localStorage.getItem('danz_mlServer');
+        if (localStorage.getItem('danz_ffId')) ffIdInput.value = localStorage.getItem('danz_ffId');
+        
+        mlIdInput.addEventListener('blur', () => localStorage.setItem('danz_mlId', mlIdInput.value));
+        mlServerInput.addEventListener('blur', () => localStorage.setItem('danz_mlServer', mlServerInput.value));
+        ffIdInput.addEventListener('blur', () => localStorage.setItem('danz_ffId', ffIdInput.value));
+    }
     
-    // Load saved data jika ada
-    if (localStorage.getItem('danz_mlId')) mlIdInput.value = localStorage.getItem('danz_mlId');
-    if (localStorage.getItem('danz_mlServer')) mlServerInput.value = localStorage.getItem('danz_mlServer');
-    if (localStorage.getItem('danz_ffId')) ffIdInput.value = localStorage.getItem('danz_ffId');
+    // Render semua list
+    buildProductListWithOrder('mlList', mlProducts, 'ml');
+    buildProductListWithOrder('ffList', ffProducts, 'ff');
+    initLocalStorage();
     
-    // Simpan saat user meninggalkan input (onblur)
-    mlIdInput.addEventListener('blur', () => localStorage.setItem('danz_mlId', mlIdInput.value));
-    mlServerInput.addEventListener('blur', () => localStorage.setItem('danz_mlServer', mlServerInput.value));
-    ffIdInput.addEventListener('blur', () => localStorage.setItem('danz_ffId', ffIdInput.value));
-    
-    // optional: manual WA tetap bisa, tanpa paksa id, tapi untuk klik harga sudah validasi
-    const manualBtn = document.getElementById('manualWaBtn');
-    // tidak mengubah manual, biarkan tetap bisa chat umum
-    
-    // tambahan efek smooth agar lebih baik
-    console.log("Danz Shop ready | Klik harga langsung kirim ke WhatsApp dengan ID terisi");
+    // Opsional: manual WA tetap bisa diakses
+    console.log("Danz Shop ready | Pilih item, klik ORDER untuk kirim ke WhatsApp dengan ID yang sudah diisi");
 </script>
 </body>
 </html>
