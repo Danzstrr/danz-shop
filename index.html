@@ -35,7 +35,7 @@
             transition: transform 0.2s;
         }
 
-        /* BANNER GAMBAR di ATAS (sesuai permintaan) */
+        /* BANNER GAMBAR di ATAS */
         .hero-banner {
             width: 100%;
             background: #00000022;
@@ -97,6 +97,91 @@
         /* konten list */
         .content-padding {
             padding: 24px 26px 20px 26px;
+        }
+
+        /* style untuk form MASUKAN ID ANDA */
+        .id-form-container {
+            background: linear-gradient(135deg, #10141f, #0b0f17);
+            border-radius: 32px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 180, 70, 0.4);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+        }
+
+        .id-form-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffd966;
+            margin-bottom: 14px;
+        }
+
+        .id-form-title i {
+            font-size: 1.4rem;
+            color: #ffaa33;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .input-id {
+            flex: 2;
+            min-width: 180px;
+            background: #1e253f;
+            border: 1px solid #ffb34755;
+            padding: 14px 18px;
+            border-radius: 60px;
+            font-size: 1rem;
+            color: #fff3df;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .input-id:focus {
+            border-color: #ffb347;
+            box-shadow: 0 0 8px rgba(255, 180, 70, 0.6);
+        }
+
+        .input-id::placeholder {
+            color: #9aa2c0;
+            font-size: 0.9rem;
+        }
+
+        .btn-save-id {
+            background: linear-gradient(95deg, #ffb347, #ff8c1a);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1rem;
+            color: #1e1a0c;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .btn-save-id:hover {
+            background: linear-gradient(95deg, #ffa02e, #f57c00);
+            transform: scale(0.98);
+        }
+
+        .info-id-text {
+            font-size: 0.7rem;
+            margin-top: 10px;
+            color: #b9c2e0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .section-title {
@@ -258,24 +343,31 @@
             .section-title {
                 font-size: 1.4rem;
             }
+            .input-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-save-id {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
 <div class="shop-container">
-    <!-- FOTO DI ATAS (sesuai permintaan) -->
+    <!-- FOTO DI ATAS -->
     <div class="hero-banner">
         <img class="hero-img" src="https://files.catbox.moe/m212ge.jpg" 
              alt="Danz Shop Banner" 
              onerror="this.src='https://via.placeholder.com/800x200?text=DANZ+SHOP+TOP+UP'">
     </div>
 
-    <!-- RUNNING TEXT: WELCOME TO DANZ SHOP dengan gaya menarik -->
+    <!-- RUNNING TEXT: WELCOME TO DANZ SHOP -->
     <div class="running-text-area">
         <div class="running-text">
             <i class="fas fa-fire"></i> 🔥 WELCOME TO DANZ SHOP 🔥 <i class="fas fa-crown"></i>   |  
             <i class="fas fa-gamepad"></i> TOP UP MOBILE LEGENDS & FREE FIRE   |  
-            <i class="fas fa-bolt"></i> FAST RESpon & AMAN   |  
+            <i class="fas fa-bolt"></i> FAST RESPON & AMAN   |  
             <i class="fab fa-whatsapp"></i> ORDER VIA WHATSAPP   |  
             <i class="fas fa-diamond"></i> DIAMOND MURAH   |  
             🔥 WELCOME TO DANZ SHOP 🔥 <i class="fas fa-crown"></i>   |  
@@ -286,6 +378,24 @@
     </div>
 
     <div class="content-padding">
+        <!-- ========= MASUKAN ID ANDA ========= -->
+        <div class="id-form-container">
+            <div class="id-form-title">
+                <i class="fas fa-id-card"></i>
+                <span>MASUKAN ID ANDA</span>
+                <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="input-group">
+                <input type="text" class="input-id" id="userGameId" placeholder="Contoh: 12345678 (ID Mobile Legends / Free Fire)" autocomplete="off">
+                <button class="btn-save-id" id="saveIdBtn">
+                    <i class="fas fa-save"></i> Simpan ID
+                </button>
+            </div>
+            <div class="info-id-text" id="idStatusMessage">
+                <i class="fas fa-info-circle"></i> Masukkan ID game kamu agar memudahkan proses top up.
+            </div>
+        </div>
+
         <!-- LIST TOP UP MOBILE LEGEND -->
         <div class="section-title">
             <i class="fas fa-mobile-alt"></i>
@@ -400,13 +510,13 @@
             </div>
         </div>
 
-        <!-- Admin WhatsApp dengan nomor yg diminta -->
+        <!-- Admin WhatsApp dengan nomor yang diminta -->
         <div class="wa-card">
             <div class="wa-title">
                 <i class="fab fa-whatsapp"></i> ORDER LANGSUNG KE ADMIN
             </div>
             <a href="https://wa.me/6287756012848?text=Halo%20Danz%20Shop%2C%20saya%20mau%20top%20up%20ML%20%2F%20FF" 
-               class="btn-wa" target="_blank" rel="noopener noreferrer">
+               class="btn-wa" target="_blank" rel="noopener noreferrer" id="waLink">
                 <i class="fab fa-whatsapp"></i> Chat WhatsApp Admin
             </a>
             <div class="wa-number">
@@ -422,5 +532,86 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Fitur menyimpan ID ke localStorage dan mengupdate tombol WA + menampilkan pesan
+    const idInput = document.getElementById('userGameId');
+    const saveBtn = document.getElementById('saveIdBtn');
+    const statusMsg = document.getElementById('idStatusMessage');
+    const waLink = document.getElementById('waLink');
+
+    // Fungsi untuk update link WhatsApp dengan ID yang tersimpan
+    function updateWALinkWithId() {
+        let savedId = localStorage.getItem('danzUserId');
+        if (savedId && savedId.trim() !== "") {
+            const baseUrl = "https://wa.me/6287756012848?text=";
+            const customText = `Halo%20Danz%20Shop%2C%20saya%20mau%20top%20up%20dengan%20ID%20%3A%20${encodeURIComponent(savedId)}%20.%20Mohon%20info%20untuk%20pembelian%20diamond%20ML%20%2F%20FF.`;
+            waLink.href = baseUrl + customText;
+        } else {
+            // default jika belum ada ID
+            waLink.href = "https://wa.me/6287756012848?text=Halo%20Danz%20Shop%2C%20saya%20mau%20top%20up%20ML%20%2F%20FF";
+        }
+    }
+
+    // Tampilkan ID tersimpan saat load
+    function loadSavedId() {
+        let savedId = localStorage.getItem('danzUserId');
+        if (savedId) {
+            idInput.value = savedId;
+            statusMsg.innerHTML = `<i class="fas fa-check-circle" style="color:#25D366;"></i> ID Tersimpan: ${savedId} - Admin akan melihat ID Anda saat chat.`;
+            statusMsg.style.color = "#c3e0a2";
+        } else {
+            statusMsg.innerHTML = `<i class="fas fa-info-circle"></i> Masukkan ID game kamu agar memudahkan proses top up.`;
+            statusMsg.style.color = "#b9c2e0";
+        }
+        updateWALinkWithId();
+    }
+
+    // Simpan ID
+    function saveUserId() {
+        let userId = idInput.value.trim();
+        if (userId === "") {
+            statusMsg.innerHTML = `<i class="fas fa-exclamation-triangle" style="color:#ffaa33;"></i> ID tidak boleh kosong! Masukkan ID Mobile Legends atau Free Fire.`;
+            statusMsg.style.color = "#ffaa88";
+            setTimeout(() => {
+                if (localStorage.getItem('danzUserId')) {
+                    loadSavedId();
+                } else {
+                    statusMsg.innerHTML = `<i class="fas fa-info-circle"></i> Masukkan ID game kamu agar memudahkan proses top up.`;
+                    statusMsg.style.color = "#b9c2e0";
+                }
+            }, 2000);
+            return;
+        }
+        // validasi sederhana (minimal angka/huruf)
+        if (userId.length < 4) {
+            statusMsg.innerHTML = `<i class="fas fa-exclamation-triangle" style="color:#ffaa33;"></i> ID terlalu pendek, pastikan ID benar (minimal 4 karakter).`;
+            statusMsg.style.color = "#ffaa88";
+            return;
+        }
+        localStorage.setItem('danzUserId', userId);
+        statusMsg.innerHTML = `<i class="fas fa-check-circle" style="color:#25D366;"></i> ID "${userId}" berhasil disimpan! Admin akan melihatnya saat Anda klik WhatsApp.`;
+        statusMsg.style.color = "#b8f2b0";
+        updateWALinkWithId();
+        // setelah 3 detik balik ke tampilan tersimpan
+        setTimeout(() => {
+            if (localStorage.getItem('danzUserId') === userId) {
+                statusMsg.innerHTML = `<i class="fas fa-check-circle" style="color:#25D366;"></i> ID Tersimpan: ${userId} - Admin akan melihat ID Anda saat chat.`;
+                statusMsg.style.color = "#c3e0a2";
+            }
+        }, 3000);
+    }
+
+    // Event listener
+    saveBtn.addEventListener('click', saveUserId);
+    idInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            saveUserId();
+        }
+    });
+
+    // Saat halaman dimuat
+    loadSavedId();
+</script>
 </body>
 </html>
