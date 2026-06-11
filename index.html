@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Danz Shop | Top Up FF & Mobile Legends</title>
+    <title>Danz Shop | Splash Screen</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -17,462 +17,246 @@
         body {
             background: linear-gradient(145deg, #0a0c17 0%, #04060c 100%);
             min-height: 100vh;
-            padding: 30px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
-        .shop-container {
-            max-width: 900px;
+        /* SPLASH CONTAINER */
+        .splash-container {
+            max-width: 500px;
             width: 100%;
-            background: rgba(10, 14, 23, 0.85);
-            backdrop-filter: blur(2px);
-            border-radius: 48px;
-            box-shadow: 0 30px 45px -15px rgba(0,0,0,0.6), 0 0 0 1px rgba(255, 200, 100, 0.2);
+            background: rgba(10, 14, 23, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 64px;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255, 200, 100, 0.3);
             overflow: hidden;
+            text-align: center;
+            padding: 32px 24px 40px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
         }
 
-        .hero-img {
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-area {
+            margin-bottom: 24px;
+        }
+
+        .logo-img {
             width: 100%;
-            display: block;
-            object-fit: cover;
-            max-height: 200px;
-            border-bottom: 3px solid #f5b042;
+            max-width: 280px;
+            border-radius: 32px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            border: 2px solid rgba(255, 180, 70, 0.6);
+            transition: transform 0.2s;
         }
 
-        .running-text-area {
-            background: linear-gradient(90deg, #11161f, #1a1f2e);
-            padding: 10px 10px;
-            border-bottom: 1px solid rgba(245, 176, 66, 0.5);
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .running-text {
-            display: inline-block;
-            font-size: 1.1rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #FFE0A3, #FFB347);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: slideText 22s linear infinite;
-            padding-right: 40px;
-        }
-
-        .running-text i {
-            color: #ffb347;
-            margin: 0 6px;
-        }
-
-        @keyframes slideText {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-48%); }
-        }
-
-        @media (max-width: 600px) {
-            .running-text { font-size: 0.9rem; animation: slideText 18s linear infinite; }
-            .hero-img { max-height: 140px; }
-        }
-
-        .content-padding {
-            padding: 20px 24px 20px 24px;
-        }
-
-        /* SECTION TITLE */
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #FADB85;
-            margin: 24px 0 16px 6px;
-            border-left: 5px solid #ffb347;
-            padding-left: 14px;
-        }
-
-        .topup-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        /* CARD dengan satu tombol ORDER di kanan */
-        .topup-card {
-            background: rgba(20, 25, 45, 0.7);
-            backdrop-filter: blur(4px);
-            border-radius: 60px;
-            padding: 8px 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid rgba(255, 190, 80, 0.3);
-            transition: 0.2s;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .topup-card:hover {
-            background: rgba(45, 52, 85, 0.85);
-            border-color: #ffb347;
-        }
-
-        .info-left {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            flex: 2;
-            min-width: 140px;
-        }
-
-        .icon-badge {
-            background: #1e243e;
-            width: 38px;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 40px;
-            font-size: 1.2rem;
-            color: #ffc857;
-        }
-
-        .item-name {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #f3e9ce;
-        }
-
-        .item-price {
-            font-size: 1.1rem;
+        .brand-name {
+            font-size: 2rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #FFD966, #FFA52F);
+            margin-top: 20px;
+            background: linear-gradient(135deg, #FFDF85, #FFB347);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            letter-spacing: 1px;
         }
 
-        /* Satu tombol ORDER di setiap item */
-        .order-btn {
-            background: linear-gradient(95deg, #25D366, #128C7E);
-            border: none;
-            padding: 8px 22px;
-            border-radius: 40px;
-            font-weight: bold;
+        .sub {
             font-size: 0.85rem;
-            color: white;
+            color: #a9b7e0;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .next-btn {
+            background: linear-gradient(95deg, #ffb347, #ff8c1a);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #1e1a0c;
+            margin-top: 36px;
             cursor: pointer;
             transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-        }
-
-        .order-btn:hover {
-            background: linear-gradient(95deg, #20b859, #0e6b5e);
-            transform: scale(1.02);
-        }
-
-        /* ====== FORM ID dipindah ke BAWAH, dengan tulisan kecil ====== */
-        .id-forms-wrapper {
-            margin-top: 35px;
-            background: linear-gradient(135deg, #0c1020, #080b14);
-            border-radius: 32px;
-            padding: 16px 20px;
-            border: 1px solid rgba(255, 180, 70, 0.35);
-        }
-
-        .id-group {
-            margin-bottom: 16px;
-        }
-
-        .id-group:last-child {
-            margin-bottom: 0;
-        }
-
-        .id-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #b9c3e6;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            letter-spacing: 0.3px;
-        }
-
-        .id-label i {
-            font-size: 0.7rem;
-            color: #ffb347;
-        }
-
-        .input-row-small {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .input-field-small {
-            flex: 1;
-            background: #1a1f32;
-            border: 1px solid #ffb34755;
-            padding: 8px 14px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            color: #f0e7d6;
-            outline: none;
-        }
-
-        .input-field-small:focus {
-            border-color: #ffb347;
-        }
-
-        .info-tip-small {
-            font-size: 0.65rem;
-            color: #7a84aa;
-            margin-top: 5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .wa-card {
-            margin-top: 28px;
-            background: linear-gradient(115deg, #0f1422, #0b0f1c);
-            border-radius: 48px;
-            padding: 16px 20px;
-            text-align: center;
-            border: 1px solid rgba(37, 211, 102, 0.5);
-        }
-
-        .btn-direct-wa {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: #25D366;
-            padding: 10px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: white;
-            transition: 0.2s;
+            gap: 12px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.3);
         }
 
-        .btn-direct-wa:hover {
-            background: #1da959;
+        .next-btn:hover {
+            background: linear-gradient(95deg, #ffa02e, #f57c00);
+            transform: scale(1.02);
+            box-shadow: 0 10px 22px rgba(255,140,0,0.4);
         }
 
-        .footer-note {
-            margin-top: 18px;
-            text-align: center;
-            font-size: 0.65rem;
-            color: #5f6c95;
-            padding-bottom: 16px;
+        .dola-badge {
+            margin-top: 28px;
+            font-size: 0.7rem;
+            background: rgba(255,255,240,0.1);
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 40px;
+            color: #ffd966;
         }
 
-        @media (max-width: 550px) {
-            .content-padding { padding: 16px; }
-            .item-name { font-size: 0.75rem; }
-            .item-price { font-size: 0.9rem; }
-            .order-btn { padding: 6px 16px; font-size: 0.7rem; }
-            .section-title { font-size: 1.2rem; }
-            .icon-badge { width: 32px; height: 32px; font-size: 1rem; }
-            .input-field-small { font-size: 0.7rem; }
+        .footer-splash {
+            margin-top: 30px;
+            font-size: 0.6rem;
+            color: #5f6a8a;
         }
+
+        @media (max-width: 480px) {
+            .splash-container { padding: 24px 20px 32px; }
+            .brand-name { font-size: 1.6rem; }
+            .next-btn { padding: 12px 24px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="splash-container" id="splashScreen">
+        <div class="logo-area">
+            <!-- FOTO YANG DIBERIKAN (DANZ GAME & Dola AI) dari file 356367.png -->
+            <img class="logo-img" src="356367.png" alt="Danz Game & Dola AI" onerror="this.src='https://via.placeholder.com/280x280?text=DANZ+GAME+%7C+Dola+AI'">
+        </div>
+        <div class="brand-name">
+            DANZ GAME
+        </div>
+        <div class="sub">
+            <i class="fas fa-robot"></i> Dola AI <i class="fas fa-crown"></i>
+        </div>
+        <button class="next-btn" id="nextButton">
+            <i class="fas fa-arrow-right"></i> NEXT <i class="fas fa-store"></i>
+        </button>
+        <div class="dola-badge">
+            <i class="fas fa-magic"></i> Powered by Dola AI Assistant
+        </div>
+        <div class="footer-splash">
+            Top Up Mobile Legends & Free Fire
+        </div>
+    </div>
+
+    <script>
+        // Saat tombol NEXT di klik, redirect ke halaman utama web topup (Danz Shop)
+        const nextBtn = document.getElementById('nextButton');
+        nextBtn.addEventListener('click', () => {
+            // Membuka halaman utama TOP UP (konten lengkap dengan list, id form, order)
+            // Arahkan ke halaman yang sama dengan URL hash atau langsung ganti document write
+            // Karena kita ingin lanjut ke WEB utama, kita akan mengganti seluruh body dengan konten utama.
+            // Tapi lebih baik redirect ke halaman utama atau render konten baru di sini.
+            // Untuk pengalaman seamless, kita akan ganti inner HTML body dengan main shop page.
+            // Namun agar tidak kehilangan style, kita akan replace seluruh document.
+            // Tapi karena ini single page sederhana, kita langsung redirect ke '#' lalu render? 
+            // Alternatif: tampilkan main content di bawah splash, namun permintaan: "lanjut ke web".
+            // Jadi kita akan ganti isi body dengan halaman utama toko.
+            
+            // Simpan animasi kecil
+            nextBtn.innerText = "Loading...";
+            nextBtn.disabled = true;
+            
+            setTimeout(() => {
+                // Memuat halaman utama Top Up FF & ML lengkap (versi final dengan form ID di bawah, tombol order per item)
+                document.body.innerHTML = `<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Danz Shop | Top Up FF & Mobile Legends</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', system-ui, sans-serif; }
+        body { background: linear-gradient(145deg, #0a0c17 0%, #04060c 100%); min-height: 100vh; padding: 30px 20px; display: flex; justify-content: center; align-items: center; }
+        .shop-container { max-width: 900px; width: 100%; background: rgba(10, 14, 23, 0.85); backdrop-filter: blur(2px); border-radius: 48px; box-shadow: 0 30px 45px -15px rgba(0,0,0,0.6), 0 0 0 1px rgba(255, 200, 100, 0.2); overflow: hidden; }
+        .hero-img { width: 100%; display: block; object-fit: cover; max-height: 200px; border-bottom: 3px solid #f5b042; }
+        .running-text-area { background: linear-gradient(90deg, #11161f, #1a1f2e); padding: 10px 10px; border-bottom: 1px solid rgba(245, 176, 66, 0.5); overflow: hidden; white-space: nowrap; }
+        .running-text { display: inline-block; font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, #FFE0A3, #FFB347); -webkit-background-clip: text; background-clip: text; color: transparent; animation: slideText 22s linear infinite; padding-right: 40px; }
+        .running-text i { color: #ffb347; margin: 0 6px; }
+        @keyframes slideText { 0% { transform: translateX(0%); } 100% { transform: translateX(-48%); } }
+        @media (max-width: 600px) { .running-text { font-size: 0.9rem; } .hero-img { max-height: 140px; } }
+        .content-padding { padding: 20px 24px 20px 24px; }
+        .section-title { display: flex; align-items: center; gap: 10px; font-size: 1.4rem; font-weight: 700; color: #FADB85; margin: 24px 0 16px 6px; border-left: 5px solid #ffb347; padding-left: 14px; }
+        .topup-grid { display: flex; flex-direction: column; gap: 10px; }
+        .topup-card { background: rgba(20, 25, 45, 0.7); backdrop-filter: blur(4px); border-radius: 60px; padding: 8px 18px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255, 190, 80, 0.3); gap: 12px; flex-wrap: wrap; }
+        .info-left { display: flex; align-items: center; gap: 14px; flex: 2; min-width: 140px; }
+        .icon-badge { background: #1e243e; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 40px; font-size: 1.2rem; color: #ffc857; }
+        .item-name { font-size: 0.9rem; font-weight: 600; color: #f3e9ce; }
+        .item-price { font-size: 1.1rem; font-weight: 800; background: linear-gradient(135deg, #FFD966, #FFA52F); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .order-btn { background: linear-gradient(95deg, #25D366, #128C7E); border: none; padding: 8px 22px; border-radius: 40px; font-weight: bold; font-size: 0.85rem; color: white; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.2s; }
+        .order-btn:hover { background: linear-gradient(95deg, #20b859, #0e6b5e); transform: scale(1.02); }
+        .id-forms-wrapper { margin-top: 35px; background: linear-gradient(135deg, #0c1020, #080b14); border-radius: 32px; padding: 16px 20px; border: 1px solid rgba(255, 180, 70, 0.35); }
+        .id-group { margin-bottom: 16px; }
+        .id-label { font-size: 0.75rem; font-weight: 600; color: #b9c3e6; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+        .input-row-small { display: flex; flex-wrap: wrap; gap: 10px; }
+        .input-field-small { flex: 1; background: #1a1f32; border: 1px solid #ffb34755; padding: 8px 14px; border-radius: 40px; font-size: 0.75rem; color: #f0e7d6; outline: none; }
+        .input-field-small:focus { border-color: #ffb347; }
+        .info-tip-small { font-size: 0.65rem; color: #7a84aa; margin-top: 5px; display: flex; align-items: center; gap: 5px; }
+        .wa-card { margin-top: 28px; background: linear-gradient(115deg, #0f1422, #0b0f1c); border-radius: 48px; padding: 16px 20px; text-align: center; border: 1px solid rgba(37, 211, 102, 0.5); }
+        .btn-direct-wa { display: inline-flex; align-items: center; gap: 10px; background: #25D366; padding: 10px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.85rem; color: white; transition: 0.2s; }
+        .btn-direct-wa:hover { background: #1da959; }
+        .footer-note { margin-top: 18px; text-align: center; font-size: 0.65rem; color: #5f6c95; padding-bottom: 16px; }
+        @media (max-width: 550px) { .content-padding { padding: 16px; } .item-name { font-size: 0.75rem; } .item-price { font-size: 0.9rem; } .order-btn { padding: 6px 16px; font-size: 0.7rem; } .section-title { font-size: 1.2rem; } }
     </style>
 </head>
 <body>
 <div class="shop-container">
     <img class="hero-img" src="https://files.catbox.moe/m212ge.jpg" alt="Danz Shop Banner" onerror="this.src='https://via.placeholder.com/900x200?text=DANZ+SHOP'">
-
     <div class="running-text-area">
-        <div class="running-text">
-            <i class="fas fa-fire"></i> 🔥 WELCOME TO DANZ SHOP 🔥 <i class="fas fa-crown"></i>   |  
-            <i class="fas fa-gamepad"></i> TOP UP ML & FF MURAH   |  
-            <i class="fab fa-whatsapp"></i> FAST RESPON   |  
-            <i class="fas fa-diamond"></i> ORDER DENGAN SATU TOMBOL   |  
-            🔥 WELCOME TO DANZ SHOP 🔥
-        </div>
+        <div class="running-text"><i class="fas fa-fire"></i> 🔥 WELCOME TO DANZ SHOP 🔥 <i class="fas fa-crown"></i>   |   <i class="fas fa-gamepad"></i> TOP UP ML & FF MURAH   |   <i class="fab fa-whatsapp"></i> FAST RESPON   |   <i class="fas fa-diamond"></i> ORDER SATU TOMBOL   |   🔥 WELCOME TO DANZ SHOP 🔥</div>
     </div>
-
     <div class="content-padding">
-        <!-- LIST TOP UP MOBILE LEGEND -->
-        <div class="section-title">
-            <i class="fas fa-mobile-alt"></i>
-            <span>LIST TOP UP MOBILE LEGEND</span>
-        </div>
+        <div class="section-title"><i class="fas fa-mobile-alt"></i><span>LIST TOP UP MOBILE LEGEND</span></div>
         <div class="topup-grid" id="mlList"></div>
-
-        <!-- LIST TOP UP FREE FIRE -->
-        <div class="section-title">
-            <i class="fas fa-fire"></i>
-            <span>🔥 LIST TOP UP FREE FIRE 🔥</span>
-        </div>
+        <div class="section-title"><i class="fas fa-fire"></i><span>🔥 LIST TOP UP FREE FIRE 🔥</span></div>
         <div class="topup-grid" id="ffList"></div>
 
-        <!-- ========= FORM ID DI PINDAHKAN KE BAWAH (DENGAN TULISAN KECIL) ========= -->
         <div class="id-forms-wrapper">
-            <!-- ML: ID + Server -->
-            <div class="id-group">
-                <div class="id-label">
-                    <i class="fas fa-mobile-alt"></i> Mobile Legends - ID & Server
-                </div>
-                <div class="input-row-small">
-                    <input type="text" class="input-field-small" id="mlId" placeholder="ID ML (contoh: 12345678)" autocomplete="off">
-                    <input type="text" class="input-field-small" id="mlServer" placeholder="Server ML (contoh: 1234)" autocomplete="off">
-                </div>
-                <div class="info-tip-small">
-                    <i class="fas fa-info-circle"></i> Masukkan ID dan server Mobile Legends
-                </div>
-            </div>
-
-            <!-- FF: ID FF -->
-            <div class="id-group">
-                <div class="id-label">
-                    <i class="fas fa-fire"></i> Free Fire - ID Player
-                </div>
-                <div class="input-row-small">
-                    <input type="text" class="input-field-small" id="ffId" placeholder="ID FF (contoh: 11223344)" autocomplete="off">
-                </div>
-                <div class="info-tip-small">
-                    <i class="fas fa-info-circle"></i> Masukkan ID Free Fire kamu
-                </div>
-            </div>
+            <div class="id-group"><div class="id-label"><i class="fas fa-mobile-alt"></i> Mobile Legends - ID & Server</div>
+            <div class="input-row-small"><input type="text" class="input-field-small" id="mlId" placeholder="ID ML"><input type="text" class="input-field-small" id="mlServer" placeholder="Server ML"></div>
+            <div class="info-tip-small"><i class="fas fa-info-circle"></i> Masukkan ID dan server Mobile Legends</div></div>
+            <div class="id-group"><div class="id-label"><i class="fas fa-fire"></i> Free Fire - ID Player</div>
+            <div class="input-row-small"><input type="text" class="input-field-small" id="ffId" placeholder="ID FF"></div>
+            <div class="info-tip-small"><i class="fas fa-info-circle"></i> Masukkan ID Free Fire kamu</div></div>
         </div>
 
-        <!-- Tombol WA manual (opsional) -->
-        <div class="wa-card">
-            <div class="id-label" style="justify-content: center; margin-bottom: 6px; font-size: 0.8rem;">
-                <i class="fab fa-whatsapp"></i> ADMIN DANZ SHOP
-            </div>
-            <a href="https://wa.me/6287756012848?text=Halo%20Danz%20Shop%2C%20saya%20ingin%20order%20top%20up" 
-               class="btn-direct-wa" target="_blank">
-                <i class="fab fa-whatsapp"></i> Chat Admin (Manual)
-            </a>
-            <div class="info-tip-small" style="justify-content: center; margin-top: 8px;">
-                <i class="fas fa-check-circle"></i> Pilih item lalu klik ORDER untuk kirim ke WhatsApp
-            </div>
-        </div>
-        <div class="footer-note">
-            <i class="fas fa-shield-alt"></i> Danz Shop Official · Top Up ML & FF Terpercaya
-        </div>
+        <div class="wa-card"><div class="id-label" style="justify-content:center; margin-bottom:6px;"><i class="fab fa-whatsapp"></i> ADMIN DANZ SHOP</div>
+        <a href="https://wa.me/6287756012848?text=Halo%20Danz%20Shop" class="btn-direct-wa" target="_blank"><i class="fab fa-whatsapp"></i> Chat Admin (Manual)</a>
+        <div class="info-tip-small" style="justify-content:center; margin-top:8px;"><i class="fas fa-check-circle"></i> Pilih item lalu klik ORDER</div></div>
+        <div class="footer-note"><i class="fas fa-shield-alt"></i> Danz Shop Official · Top Up ML & FF Terpercaya</div>
     </div>
 </div>
-
 <script>
-    // Data produk ML
-    const mlProducts = [
-        { name: "5 DM (Diamond)", price: "1.000", detail: "5 Diamond" },
-        { name: "12 DM", price: "2.500", detail: "12 Diamond" },
-        { name: "28 DM", price: "5.500", detail: "28 Diamond" },
-        { name: "56 DM + Bonus", price: "11.000", detail: "56 Diamond + Bonus" },
-        { name: "100 DM", price: "19.000", detail: "100 Diamond" },
-        { name: "250 DM (Special)", price: "46.000", detail: "250 Diamond" },
-        { name: "400 DM + 20 Bonus", price: "73.000", detail: "400 Diamond + 20 Bonus" }
-    ];
-
-    // Data produk FF
-    const ffProducts = [
-        { name: "100 Diamond FF", price: "2.500", detail: "100 Diamond FF" },
-        { name: "210 Diamond FF", price: "5.000", detail: "210 Diamond FF" },
-        { name: "355 Diamond FF", price: "8.500", detail: "355 Diamond FF" },
-        { name: "560 Diamond FF", price: "13.000", detail: "560 Diamond FF" },
-        { name: "720 Diamond FF (Bonus)", price: "16.000", detail: "720 Diamond FF + Bonus" },
-        { name: "1400 Diamond FF", price: "30.000", detail: "1400 Diamond FF" },
-        { name: "2180 Diamond FF (Extra)", price: "46.000", detail: "2180 Diamond FF" }
-    ];
-
-    // Fungsi kirim order ke WhatsApp (satu tombol order di setiap item)
-    function sendOrderToWA(gameType, itemName, itemPrice) {
-        const adminNumber = '6287756012848';
-        
-        if (gameType === 'ml') {
-            const mlId = document.getElementById('mlId')?.value.trim() || '';
-            const mlServer = document.getElementById('mlServer')?.value.trim() || '';
-            
-            if (mlId === '' || mlServer === '') {
-                alert('⚠️ Mohon lengkapi ID ML dan Server ML di bagian bawah form!');
-                return false;
-            }
-            
-            const message = `Halo Admin Danz Shop%0A%0A✨ *ORDER TOP UP MOBILE LEGENDS* ✨%0A%0A📱 *Item:* ${itemName}%0A💰 *Harga:* Rp ${itemPrice}%0A🆔 *ID ML:* ${mlId}%0A🌐 *Server:* ${mlServer}%0A%0A✅ Mohon diproses, terima kasih!`;
-            window.open(`https://wa.me/${adminNumber}?text=${message}`, '_blank');
-            return true;
-        } 
-        else if (gameType === 'ff') {
-            const ffId = document.getElementById('ffId')?.value.trim() || '';
-            if (ffId === '') {
-                alert('⚠️ Harap masukkan ID Free Fire (FF) di bagian bawah form!');
-                return false;
-            }
-            const message = `Halo Admin Danz Shop%0A%0A🔥 *ORDER TOP UP FREE FIRE* 🔥%0A%0A🎮 *Item:* ${itemName}%0A💎 *Harga:* Rp ${itemPrice}%0A🆔 *ID FF:* ${ffId}%0A%0ASegera diproses, makasih Danz Shop!`;
-            window.open(`https://wa.me/${adminNumber}?text=${message}`, '_blank');
-            return true;
-        }
-        return false;
+    const mlProducts = [{name:"5 DM (Diamond)",price:"1.000"},{name:"12 DM",price:"2.500"},{name:"28 DM",price:"5.500"},{name:"56 DM + Bonus",price:"11.000"},{name:"100 DM",price:"19.000"},{name:"250 DM (Special)",price:"46.000"},{name:"400 DM + 20 Bonus",price:"73.000"}];
+    const ffProducts = [{name:"100 Diamond FF",price:"2.500"},{name:"210 Diamond FF",price:"5.000"},{name:"355 Diamond FF",price:"8.500"},{name:"560 Diamond FF",price:"13.000"},{name:"720 Diamond FF (Bonus)",price:"16.000"},{name:"1400 Diamond FF",price:"30.000"},{name:"2180 Diamond FF (Extra)",price:"46.000"}];
+    function sendOrder(game, item, price) {
+        const admin = "6287756012848";
+        if(game==='ml'){ let id=document.getElementById('mlId').value.trim(), sv=document.getElementById('mlServer').value.trim(); if(!id||!sv){ alert("⚠️ Isi ID ML & Server!"); return; } window.open(\`https://wa.me/\${admin}?text=Halo Admin Danz Shop%0A%0A✨ ORDER MOBILE LEGENDS ✨%0AItem: \${item}%0AHarga: Rp \${price}%0AID ML: \${id}%0AServer: \${sv}%0A%0ATerima kasih\`,'_blank'); }
+        else if(game==='ff'){ let fid=document.getElementById('ffId').value.trim(); if(!fid){ alert("⚠️ Isi ID Free Fire!"); return; } window.open(\`https://wa.me/\${admin}?text=Halo Admin Danz Shop%0A%0A🔥 ORDER FREE FIRE 🔥%0AItem: \${item}%0AHarga: Rp \${price}%0AID FF: \${fid}%0A%0ATolong diproses\`,'_blank'); }
     }
-
-    // Membuat list produk dengan SATU TOMBOL ORDER per item
-    function buildProductListWithOrder(containerId, products, gameType) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        container.innerHTML = '';
-        
-        products.forEach(prod => {
-            const card = document.createElement('div');
-            card.className = 'topup-card';
-            
-            // Kiri: icon + nama + harga
-            const leftDiv = document.createElement('div');
-            leftDiv.className = 'info-left';
-            leftDiv.innerHTML = `
-                <div class="icon-badge"><i class="fas ${gameType === 'ml' ? 'fa-diamond' : 'fa-coins'}"></i></div>
-                <div class="item-name">${prod.name}</div>
-                <div class="item-price">Rp ${prod.price}</div>
-            `;
-            
-            // Tombol ORDER (satu tombol per item)
-            const orderBtn = document.createElement('button');
-            orderBtn.className = 'order-btn';
-            orderBtn.innerHTML = '<i class="fab fa-whatsapp"></i> ORDER';
-            
-            // Event klik order
-            orderBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                sendOrderToWA(gameType, prod.name, prod.price);
-            });
-            
-            card.appendChild(leftDiv);
-            card.appendChild(orderBtn);
-            container.appendChild(card);
-        });
-    }
-
-    // Load & simpan data ID ke localStorage agar tidak hilang (opsional)
-    function initLocalStorage() {
-        const mlIdInput = document.getElementById('mlId');
-        const mlServerInput = document.getElementById('mlServer');
-        const ffIdInput = document.getElementById('ffId');
-        
-        if (localStorage.getItem('danz_mlId')) mlIdInput.value = localStorage.getItem('danz_mlId');
-        if (localStorage.getItem('danz_mlServer')) mlServerInput.value = localStorage.getItem('danz_mlServer');
-        if (localStorage.getItem('danz_ffId')) ffIdInput.value = localStorage.getItem('danz_ffId');
-        
-        mlIdInput.addEventListener('blur', () => localStorage.setItem('danz_mlId', mlIdInput.value));
-        mlServerInput.addEventListener('blur', () => localStorage.setItem('danz_mlServer', mlServerInput.value));
-        ffIdInput.addEventListener('blur', () => localStorage.setItem('danz_ffId', ffIdInput.value));
-    }
-    
-    // Render kedua list
-    buildProductListWithOrder('mlList', mlProducts, 'ml');
-    buildProductListWithOrder('ffList', ffProducts, 'ff');
-    initLocalStorage();
-    
-    console.log("Danz Shop siap | Form ID di bawah, setiap item punya 1 tombol ORDER");
+    function build(container, products, type) { const cont=document.getElementById(container); cont.innerHTML=''; products.forEach(p=>{ const card=document.createElement('div'); card.className='topup-card'; card.innerHTML=\`<div class="info-left"><div class="icon-badge"><i class="fas \${type==='ml'?'fa-diamond':'fa-coins'}"></i></div><div class="item-name">\${p.name}</div><div class="item-price">Rp \${p.price}</div></div><button class="order-btn"><i class="fab fa-whatsapp"></i> ORDER</button>\`; const btn=card.querySelector('.order-btn'); btn.addEventListener('click',()=>sendOrder(type,p.name,p.price)); cont.appendChild(card); }); }
+    build('mlList',mlProducts,'ml'); build('ffList',ffProducts,'ff');
+    (function loadStorage(){ if(localStorage.getItem('mlId')) document.getElementById('mlId').value=localStorage.getItem('mlId'); if(localStorage.getItem('mlServer')) document.getElementById('mlServer').value=localStorage.getItem('mlServer'); if(localStorage.getItem('ffId')) document.getElementById('ffId').value=localStorage.getItem('ffId'); const i1=document.getElementById('mlId'), i2=document.getElementById('mlServer'), i3=document.getElementById('ffId'); i1.addEventListener('blur',()=>localStorage.setItem('mlId',i1.value)); i2.addEventListener('blur',()=>localStorage.setItem('mlServer',i2.value)); i3.addEventListener('blur',()=>localStorage.setItem('ffId',i3.value)); })();
 </script>
+</body>
+</html>`;
+                // re-run styling tidak masalah
+            }, 300);
+        });
+    </script>
 </body>
 </html>
