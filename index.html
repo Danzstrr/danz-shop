@@ -24,7 +24,7 @@
         }
 
         .shop-container {
-            max-width: 900px;
+            max-width: 950px;
             width: 100%;
             background: rgba(10, 14, 23, 0.85);
             backdrop-filter: blur(2px);
@@ -98,7 +98,7 @@
             gap: 10px;
         }
 
-        /* Card item (tanpa tombol order di dalamnya) */
+        /* Card item (tanpa tombol order di dalamnya, bisa diklik untuk memilih) */
         .topup-card {
             background: rgba(20, 25, 45, 0.7);
             backdrop-filter: blur(4px);
@@ -145,13 +145,14 @@
         }
 
         .item-name {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: #f3e9ce;
+            letter-spacing: 0.2px;
         }
 
         .item-price {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 800;
             background: linear-gradient(135deg, #FFD966, #FFA52F);
             -webkit-background-clip: text;
@@ -159,7 +160,7 @@
             color: transparent;
         }
 
-        /* Radio / pilih game tersirat dari section yang dipilih, tapi kita simpan state selectedItem */
+        /* Form ID */
         .id-forms-wrapper {
             margin-top: 35px;
             background: linear-gradient(135deg, #0c1020, #080b14);
@@ -216,7 +217,7 @@
             gap: 5px;
         }
 
-        /* TOMBOL ORDER SATU di BAWAH */
+        /* SATU TOMBOL ORDER DI BAWAH */
         .single-order-section {
             margin-top: 28px;
             text-align: center;
@@ -290,9 +291,9 @@
 
         @media (max-width: 550px) {
             .content-padding { padding: 16px; }
-            .item-name { font-size: 0.8rem; }
-            .item-price { font-size: 0.95rem; }
-            .global-order-btn { padding: 10px 24px; font-size: 0.9rem; }
+            .item-name { font-size: 0.7rem; }
+            .item-price { font-size: 0.9rem; }
+            .global-order-btn { padding: 10px 20px; font-size: 0.85rem; }
             .section-title { font-size: 1.2rem; }
             .icon-badge { width: 34px; height: 34px; font-size: 1rem; }
         }
@@ -300,7 +301,7 @@
 </head>
 <body>
 <div class="shop-container">
-    <img class="hero-img" src="https://files.catbox.moe/m212ge.jpg" alt="Danz Shop Banner" onerror="this.src='https://via.placeholder.com/900x200?text=DANZ+SHOP'">
+    <img class="hero-img" src="https://files.catbox.moe/m212ge.jpg" alt="Danz Shop Banner" onerror="this.src='https://via.placeholder.com/950x200?text=DANZ+SHOP'">
     
     <div class="running-text-area">
         <div class="running-text">
@@ -313,14 +314,14 @@
     </div>
 
     <div class="content-padding">
-        <!-- LIST TOP UP MOBILE LEGEND (tanpa tombol order di card) -->
+        <!-- LIST TOP UP MOBILE LEGEND (harga sesuai permintaan) -->
         <div class="section-title">
             <i class="fas fa-mobile-alt"></i>
             <span>LIST TOP UP MOBILE LEGEND</span>
         </div>
         <div class="topup-grid" id="mlList"></div>
 
-        <!-- LIST TOP UP FREE FIRE -->
+        <!-- LIST TOP UP FREE FIRE (harga sesuai permintaan) -->
         <div class="section-title">
             <i class="fas fa-fire"></i>
             <span>🔥 LIST TOP UP FREE FIRE 🔥</span>
@@ -385,31 +386,34 @@
 </div>
 
 <script>
-    // Data produk ML
+    // Data produk ML (update sesuai permintaan)
     const mlProducts = [
-        { name: "5 DM (Diamond)", price: "1.000", gameType: "ml" },
-        { name: "12 DM", price: "2.500", gameType: "ml" },
-        { name: "28 DM", price: "5.500", gameType: "ml" },
-        { name: "56 DM + Bonus", price: "11.000", gameType: "ml" },
-        { name: "100 DM", price: "19.000", gameType: "ml" },
-        { name: "250 DM (Special)", price: "46.000", gameType: "ml" },
-        { name: "400 DM + 20 Bonus", price: "73.000", gameType: "ml" }
+        { name: "5 Diamond", price: "2.000", gameType: "ml" },
+        { name: "12 Diamond", price: "4.000", gameType: "ml" },
+        { name: "28 Diamond", price: "8.000", gameType: "ml" },
+        { name: "44 Diamond", price: "12.000", gameType: "ml" },
+        { name: "1x WDP 220 (80+20/Hari)", price: "28.500", gameType: "ml" },
+        { name: "144 Diamond", price: "37.500", gameType: "ml" },
+        { name: "185 Diamond", price: "47.000", gameType: "ml" },
+        { name: "2x WDP 440 (80+20/Hari)", price: "56.000", gameType: "ml" }
     ];
 
-    // Data produk FF
+    // Data produk FF (update sesuai permintaan)
     const ffProducts = [
-        { name: "100 Diamond FF", price: "2.500", gameType: "ff" },
-        { name: "210 Diamond FF", price: "5.000", gameType: "ff" },
-        { name: "355 Diamond FF", price: "8.500", gameType: "ff" },
-        { name: "560 Diamond FF", price: "13.000", gameType: "ff" },
-        { name: "720 Diamond FF (Bonus)", price: "16.000", gameType: "ff" },
-        { name: "1400 Diamond FF", price: "30.000", gameType: "ff" },
-        { name: "2180 Diamond FF (Extra)", price: "46.000", gameType: "ff" }
+        { name: "15 Diamond", price: "3.000", gameType: "ff" },
+        { name: "30 Diamond", price: "5.000", gameType: "ff" },
+        { name: "55 Diamond", price: "7.500", gameType: "ff" },
+        { name: "70 Diamond", price: "9.500", gameType: "ff" },
+        { name: "75 Diamond", price: "10.000", gameType: "ff" },
+        { name: "90 Diamond", price: "12.500", gameType: "ff" },
+        { name: "120 Diamond", price: "16.000", gameType: "ff" },
+        { name: "160 Diamond", price: "21.500", gameType: "ff" },
+        { name: "190 Diamond", price: "24.500", gameType: "ff" }
     ];
 
     let selectedItem = null; // { name, price, gameType }
 
-    // Membuat list item (tanpa tombol order, hanya card yang bisa diklik untuk memilih)
+    // Membuat list item (tanpa tombol order di card, bisa diklik untuk memilih)
     function buildSelectableList(containerId, products) {
         const container = document.getElementById(containerId);
         if (!container) return;
@@ -435,7 +439,7 @@
                     price: prod.price,
                     gameType: prod.gameType
                 };
-                // Update info di tombol order
+                // Update info di atas tombol order
                 const infoDiv = document.getElementById('selectedItemInfo');
                 infoDiv.innerHTML = `<i class="fas fa-check-circle"></i> Dipilih: ${prod.name} - Rp ${prod.price}`;
             });
@@ -443,7 +447,7 @@
         });
     }
 
-    // Fungsi konfirmasi sebelum kirim ke WA
+    // Fungsi konfirmasi "APAKAH ID SUDAH BENAR?" sebelum kirim ke WA
     function showConfirmationAndSend() {
         if (!selectedItem) {
             alert('⚠️ Silakan pilih item top up terlebih dahulu!');
@@ -456,7 +460,6 @@
         
         // Ambil data ID berdasarkan game
         let mlId = '', mlServer = '', ffId = '';
-        let isValid = true;
         
         if (gameType === 'ml') {
             mlId = document.getElementById('mlId')?.value.trim() || '';
@@ -473,7 +476,7 @@
             }
         }
         
-        // Tampilkan konfirmasi "APAKAH ID SUDAH BENAR?" dengan SweetAlert style (confirm box custom)
+        // Tampilkan konfirmasi dengan dialog "APAKAH ID SUDAH BENAR?"
         let confirmationMessage = '';
         if (gameType === 'ml') {
             confirmationMessage = `📱 *MOBILE LEGENDS*\n\nItem: ${itemName}\nHarga: Rp ${itemPrice}\nID ML: ${mlId}\nServer: ${mlServer}\n\n⚠️ APAKAH ID SUDAH BENAR?`;
@@ -481,7 +484,7 @@
             confirmationMessage = `🔥 *FREE FIRE*\n\nItem: ${itemName}\nHarga: Rp ${itemPrice}\nID FF: ${ffId}\n\n⚠️ APAKAH ID SUDAH BENAR?`;
         }
         
-        // Konfirmasi dengan dialog (confirm box)
+        // Konfirmasi dengan confirm box
         const userConfirmed = confirm(confirmationMessage + '\n\nTekan OK jika sudah benar, Batal untuk membatalkan.');
         if (!userConfirmed) {
             return; // batal
@@ -505,7 +508,7 @@
         }
     }
     
-    // Load & simpan data ID ke localStorage
+    // Load & simpan data ID ke localStorage (untuk kenyamanan user)
     function initLocalStorage() {
         const mlIdInput = document.getElementById('mlId');
         const mlServerInput = document.getElementById('mlServer');
@@ -520,7 +523,7 @@
         ffIdInput.addEventListener('blur', () => localStorage.setItem('danz_ffId', ffIdInput.value));
     }
     
-    // Render semua list (tanpa tombol order di card)
+    // Render semua list
     buildSelectableList('mlList', mlProducts);
     buildSelectableList('ffList', ffProducts);
     initLocalStorage();
@@ -529,7 +532,7 @@
     const globalOrderBtn = document.getElementById('globalOrderBtn');
     globalOrderBtn.addEventListener('click', showConfirmationAndSend);
     
-    console.log("Danz Shop siap | Pilih item, lalu klik ORDER SEKARANG, akan muncul konfirmasi ID");
+    console.log("Danz Shop siap | Pilih item, klik ORDER SEKARANG, muncul konfirmasi ID");
 </script>
 </body>
 </html>
